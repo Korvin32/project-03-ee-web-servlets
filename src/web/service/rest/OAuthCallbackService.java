@@ -1,10 +1,12 @@
 package web.service.rest;
 
 import javax.ejb.Stateless;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 
 import org.slf4j.Logger;
@@ -19,7 +21,7 @@ public class OAuthCallbackService {
     @GET
     @Produces("application/json")
     @Path("update/{id:[0-9][0-9]*}")
-    public Response update(@PathParam("id") Long id) {
+    public Response update(@Context HttpServletRequest request, @PathParam("id") Long id) {
         LOG.info("--> update({}).", id);
         LOG.info("<-- update().");
         return Response.noContent().build();
